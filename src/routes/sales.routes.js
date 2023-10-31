@@ -18,6 +18,6 @@ router.post("/sales", authRequired, createSale);
 
 router.delete("/sales/:id", authRequired, deleteSale);
 
-router.patch("/sales", authRequired, updateSale);
+router.put("/sales/:id", authRequired, updateSale);
 
 export default router;

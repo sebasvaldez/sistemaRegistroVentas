@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 const saleSchema = new mongoose.Schema(
   {
     dniClient: {
-      type: Num,
+      type: Number,
       required: true,
       trim: true,
     },
@@ -18,24 +18,33 @@ const saleSchema = new mongoose.Schema(
       trim: true,
     },
     quantity: {
-      type: Num,
+      type: Number,
       required: true,
-      trim: true,
     },
     price: {
-      type: Num,
+      type: Number,
       required: true,
-      trim: true,
     },
     totalSale: {
-      type: Num,
+      type: Number,
       required: true,
-      trim: true,
+    },
+    user: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: "User",
+      required: true,
     },
   },
   {
     timestamps: true,
   }
 );
+
+//calcula el total de la venta multiplicando quantity*price
+
+saleSchema.pre("sae", function (next) {
+  this.totalSale = this.quantity * this.price;
+  next();
+});
 
 export default mongoose.model("Sale", saleSchema);
