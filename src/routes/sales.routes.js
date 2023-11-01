@@ -7,6 +7,8 @@ import {
   deleteSale,
   updateSale,
 } from "../controllers/sales.controller.js";
+import { validateSchema } from "../middlewares/validator.middleware.js";
+import { createSaleSchema } from "../schemas/sale.schema.js";
 
 const router = Router();
 
@@ -14,7 +16,12 @@ router.get("/sales", authRequired, getSales);
 
 router.get("/sales/:id", authRequired, getSale);
 
-router.post("/sales", authRequired, createSale);
+router.post(
+  "/sales",
+  authRequired,
+  validateSchema(createSaleSchema),
+  createSale
+);
 
 router.delete("/sales/:id", authRequired, deleteSale);
 
