@@ -8,6 +8,7 @@ export const createCategory = async (req, res) => {
     const newCategory = new Category({ category });
     const categorySaved = await newCategory.save();
     res.json(categorySaved);
+    
   } catch (error) {
     return res.status(500).json({ message: error.message });
   }
@@ -25,8 +26,8 @@ export const getCategories = async (req, res) => {
 export const deleteCategory = async (req, res) => {
   const { id } = req.params;
   try {
-     await Category.findByIdAndDelete(id);
-    
+    await Category.findByIdAndDelete(id);
+
     res.status(204).json(["Category deleted"]);
   } catch (error) {
     return res.status(500).json({ message: error.message });

@@ -1,8 +1,8 @@
 import express from "express";
 import morgan from "morgan";
 import authRoutes from "../src/routes/auth.routes.js";
-import moviesRoutes from "../src/routes/movies.routes.js";
-
+import categoriesRoutes from "../src/routes/categories.routes.js";
+import customerRoutes from "../src/routes/customer.routes.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
@@ -19,6 +19,8 @@ app.use(morgan("dev"));
 app.use(express.json());
 app.use(cookieParser());
 app.use("/api", authRoutes);
-app.use("/api", moviesRoutes);
+app.use("/api", categoriesRoutes);
+app.use("/api", customerRoutes);
+
 
 export default app;

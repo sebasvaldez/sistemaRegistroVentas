@@ -92,6 +92,8 @@ export const profile = async (req, res) => {
   });
 };
 
+//la funcion verifyToken verifica que el token recibido sea valido y que el usuario exista en la base de datos y devuelve los datos del usuario
+
 export const verifyToken = async (req, res) => {
   const { token } = req.cookies;
   if (!token) return res.status(401).json(["Token no encontrado"]);

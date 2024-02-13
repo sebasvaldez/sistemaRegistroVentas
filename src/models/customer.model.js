@@ -30,3 +30,5 @@ const customerSchema = new mongoose.Schema({
     trim: true,
   },
 });
+
+export default mongoose.model("Customer", customerSchema);
