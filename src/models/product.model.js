@@ -1,34 +1,51 @@
 import mongoose from "mongoose";
 
 const productSchema = new mongoose.Schema({
-  name: {
+  brand: {
     type: String,
     required: true,
-    trim: true,
-    unique: true,
+    trim: true
   },
-  price: {
-    type: Number,
+  model: {
+    type: String,
     required: true,
+    trim: true
+  },
+  screen: {
+    size: String,
+    resolution: String,
+    type:{
+      type: String,
+    },
+  },
+  mainCamera: {
+    resolution: String,
+    features: String,
+  },
+  processor: String,
+  memory: {
+    ram: String,
+    storage: String,
+  },
+  battery: {
+    capacity: String,
+    fastCharging: String,
+  },
+  image: {
+    type: String,
+    required: true,
+    trim: true
   },
   stock: {
     type: Number,
     required: true,
   },
-  category: {
-    type: String,
+  price:{
+    type: Number,
     required: true,
-  },
-  description: {
-    type: String,
-    required: true,
-  },
-  picture: {
-    type: String,
-    required: true,
-  },
-  brand: {
-    type: String,
-    required: true,
-  },
+  
+  }
 });
+
+
+export const Product = mongoose.model("Product", productSchema);

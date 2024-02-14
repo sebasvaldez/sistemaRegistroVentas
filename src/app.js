@@ -3,6 +3,7 @@ import morgan from "morgan";
 import authRoutes from "../src/routes/auth.routes.js";
 import categoriesRoutes from "../src/routes/categories.routes.js";
 import customerRoutes from "../src/routes/customer.routes.js";
+import productRoutes from "../src/routes/product.routes.js";
 import cookieParser from "cookie-parser";
 import cors from "cors";
 
@@ -21,6 +22,7 @@ app.use(cookieParser());
 app.use("/api", authRoutes);
 app.use("/api", categoriesRoutes);
 app.use("/api", customerRoutes);
+app.use("/api", productRoutes)
 
 
 export default app;
