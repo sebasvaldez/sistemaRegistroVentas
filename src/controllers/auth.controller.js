@@ -6,7 +6,6 @@ import { TOKEN_SECRET } from "../config.js";
 
 export const register = async (req, res) => {
   const { username, email, rol, picture, password } = req.body;
-  //console.log(username, email, rol, picture, password);
 
   try {
     const userEmailFound = await User.findOne({ email });

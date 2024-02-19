@@ -6,8 +6,8 @@ import {
   updateProduct,
   getProduct,
 } from "../controllers/product.controller.js";
-import { validateSchema } from "../middlewares/validator.middleware.js";
-import { productSchema } from "../schemas/product.schema.js";
+// import { validateSchema } from "../middlewares/validator.middleware.js";
+// import { productSchema } from "../schemas/product.schema.js";
 
 const router = Router();
 
