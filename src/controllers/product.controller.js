@@ -1,4 +1,4 @@
-import { Product } from "../models/product.model.js";
+import  Product  from "../models/product.model.js";
 
 export const createProduct = async (req, res) => {
   const {
@@ -31,16 +31,28 @@ export const createProduct = async (req, res) => {
     const productSaved = await newProduct.save();
     res.json(productSaved);
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    return res.status(500).json([ error.message ]);
   }
 };
+
+export const getProduct = async (req,res)=>{
+  const {id}= req.params;
+  try {
+    const product = await Product.findById(id);
+    if (!product) return res.status(404).json(["Product not found"]);
+    res.json(product);
+  } catch (error) {
+    return res.status(500).json([ error.message ]);
+  }
+}
+
 
 export const getProducts = async (req, res) => {
   try {
     const products = await Product.find();
     res.json(products);
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    return res.status(500).json([ error.message ]);
   }
 };
 
@@ -50,7 +62,7 @@ export const deleteProduct = async (req, res) => {
     await Product.findByIdAndDelete(id);
     res.status(204).json(["Product deleted"]);
   } catch (error) {
-    return res.status(500).json({ message: error.message });
+    return res.status(500).json([error.message ]);
   }
 };
 
